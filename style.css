@@ -323,7 +323,7 @@ h2 {
     .header-info { 
         position: absolute; 
         top: 20px; 
-        font-size: 9px !important; /* Force tiny text */
+        font-size: 12px !important; /* Force tiny text */
         padding: 4px 10px; 
         letter-spacing: 1px;
     }
@@ -354,3 +354,4 @@ h2 {
     .site-footer { padding: 30px 15px; margin-top: 30px; }
     .site-footer p { font-size: 0.8rem; }
 }
+
