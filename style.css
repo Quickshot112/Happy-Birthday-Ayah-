@@ -60,26 +60,23 @@ audio:hover { opacity: 1; }
     flex-direction: column;
     align-items: center;
     
-    /* FIX: START FROM TOP INSTEAD OF CENTER */
-    /* This prevents the header from getting cut off */
+    /* --- FIX: START FROM TOP INSTEAD OF CENTER --- */
+    /* This ensures the Header is visible and not cut off at the top */
     justify-content: flex-start; 
     
     position: relative;
     
-    /* Add space at the top so header isn't stuck to edge */
-    padding-top: 40px; 
+    /* Padding pushes the header down from the very top edge */
+    padding-top: 60px; 
     padding-bottom: 50px;
 }
 
 /* --- HEADER INFO (VISIBLE GAP FIX) --- */
 .header-info {
-    /* SIT IN FLOW (Relative) */
+    /* SIT IN FLOW (Relative) - This makes it take up real space */
     position: relative; 
     
-    /* Space above the header */
-    margin-top: 10px;
-    
-    /* THIS IS THE GAP BETWEEN HEADER AND SLIDES */
+    /* THIS IS THE GAP YOU WANTED */
     margin-bottom: 50px; 
     
     color: #DA291C;
@@ -93,9 +90,9 @@ audio:hover { opacity: 1; }
     text-transform: uppercase;
     z-index: 20;
     
-    /* Reset transform centering since we are using flexbox */
-    left: auto;
+    /* Reset centering (Flexbox handles it now) */
     top: auto;
+    left: auto;
     transform: none;
     white-space: nowrap;
 }
@@ -346,8 +343,7 @@ h2 {
 
 /* --- MOBILE SPECIFIC (< 600px) --- */
 @media (max-width: 600px) {
-    /* Less top padding on mobile since header is relative */
-    .main-container { padding-top: 40px; padding-bottom: 20px; }
+    .main-container { padding-top: 40px; padding-bottom: 20px; left: 0; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
     .header-info { 
