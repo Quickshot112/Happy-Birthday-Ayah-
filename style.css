@@ -49,7 +49,7 @@ audio:hover { opacity: 1; }
     /* Min-height ensures it fills screen, but auto allows scrolling */
     min-height: 100vh;
     height: auto;
-	left: 20px;
+    /* Removed 'left: 20px' to ensure true centering */
     
     display: flex;
     flex-direction: column;
@@ -316,12 +316,17 @@ h2 {
 
 /* --- MOBILE SPECIFIC SETTINGS --- */
 @media (max-width: 600px) {
+    /* Removed 'left: 5px' to prevent misalignment */
     .main-container { padding-top: 80px; padding-bottom: 20px; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
     .header-info { 
         position: absolute; 
         top: 20px; 
+        /* SMALLER FONT SIZE ON MOBILE: */
+        font-size: 0.6rem; 
+        padding: 5px 15px; /* Reduced padding */
+        white-space: nowrap; /* Keeps it on one line */
     }
     
     .swiper-slide { 
