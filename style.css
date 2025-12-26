@@ -1,27 +1,33 @@
 /* --- RESET & BASICS --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 body {
     background-color: #111;
     font-family: 'Roboto', sans-serif;
     color: white;
     
-    /* ENABLE SCROLLING */
-    min-height: 100vh;
+    /* ENABLE VERTICAL SCROLLING */
     overflow-y: auto; 
-    overflow-x: hidden; 
     
-    /* Center layout */
+    /* TRUE CENTER LAYOUT */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0; 
 }
 
 /* Audio Player Style */
 audio {
     position: fixed;
     bottom: 20px;
+    left: 20px; /* Kept it simple on the left */
     z-index: 100;
     opacity: 0.5; 
     transition: opacity 0.3s;
@@ -43,14 +49,14 @@ audio:hover { opacity: 1; }
     z-index: 10;
 }
 
-/* --- MAIN CONTAINER (SCROLLABLE) --- */
+/* --- MAIN CONTAINER --- */
 .main-container {
     width: 100%;
+    max-width: 100vw; /* Strict limit */
     min-height: 100vh;
     height: auto;
     
-    /* DEFAULT (Laptop/PC): Slight shift to center visually */
-    left: 20px;
+    /* REMOVED 'left' PROPERTIES - THIS FIXES THE ZOOM ISSUE */
     
     display: flex;
     flex-direction: column;
@@ -58,7 +64,6 @@ audio:hover { opacity: 1; }
     justify-content: center; 
     position: relative;
     
-    /* SPACE FOR HEADER AND FOOTER */
     padding-top: 100px; 
     padding-bottom: 50px;
 }
@@ -77,17 +82,20 @@ audio:hover { opacity: 1; }
     text-transform: uppercase;
     z-index: 20;
     
-    /* Force Center */
+    /* Perfect Centering */
     left: 50%;
     transform: translateX(-50%);
+    white-space: nowrap;
 }
 
 /* --- SWIPER / CARD STYLES --- */
 .swiper {
     width: 100%;
-    padding: 20px 0; 
+    padding: 40px 0; 
     overflow: visible; 
-    margin: 0 auto; 
+    /* Force swiper to center itself */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .swiper-slide {
@@ -212,21 +220,13 @@ h2 {
 /* Footer Hint */
 .footer-hint { display: none; } 
 
-/* --- INTRO OVERLAY STYLES (FIXED) --- */
+/* --- INTRO OVERLAY STYLES --- */
 #intro-overlay {
     position: fixed;
-    /* Use all 4 coords to force full screen lock */
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    
-    /* Ensure it uses viewport units to ignore parent sizing */
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    
+    width: 100%;
+    height: 100%;
     background: #000;
     z-index: 9999;
     display: flex;
@@ -319,31 +319,25 @@ h2 {
     100% { transform: scale(1); }
 }
 
-/* --- TABLET SPECIFIC MODE (601px - 1280px) --- */
-/* Fixes alignment on iPads/Tablets in landscape */
-@media (min-width: 601px) and (max-width: 1280px) {
-    .main-container {
-        /* Pushes content right to fix the "Left Lean" on tablets */
-        left: 60px; 
+/* --- TABLET SPECIFIC (601px - 1024px) --- */
+@media (min-width: 601px) and (max-width: 1024px) {
+    /* Tablet fix: Reduce width slightly so 3D effect has room to center */
+    .swiper-slide {
+        width: 60vw; 
     }
+    
+    /* Ensure no weird shifts */
+    .main-container { left: 0 !important; }
 }
 
-/* --- MOBILE SPECIFIC SETTINGS (Phones < 600px) --- */
+/* --- MOBILE SPECIFIC (< 600px) --- */
 @media (max-width: 600px) {
-    /* Reset Left shift to 0 for phones */
-    .main-container { 
-        padding-top: 80px; 
-        padding-bottom: 20px; 
-        left: 0px; 
-    }
-    
+    .main-container { padding-top: 80px; padding-bottom: 20px; left: 0; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
-    /* Header Info: Significantly smaller */
     .header-info { 
         position: absolute; 
         top: 20px; 
-        font-size: 9px !important; 
         padding: 4px 10px; 
         letter-spacing: 1px;
     }
@@ -360,7 +354,7 @@ h2 {
     
     .name-text { font-size: 1.5rem; margin: 5px 0; }
     .sub-name { font-size: 0.9rem; margin-bottom: 10px; }
-    h2 { font-size: 1.1rem; }
+    h2 { font-size: 1.1rem; } 
     .desc { font-size: 0.8rem; margin-bottom: 8px;}
     .role { font-size: 0.7rem; margin-bottom: 5px;}
     .age-badge { font-size: 0.7rem; padding: 4px 12px; margin-bottom: 10px; }
