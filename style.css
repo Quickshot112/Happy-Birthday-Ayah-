@@ -67,7 +67,7 @@ audio:hover { opacity: 1; }
     padding-bottom: 50px;
 }
 
-/* --- HEADER INFO (FIXED ALIGNMENT) --- */
+/* --- HEADER INFO (GAP FIX) --- */
 .header-info {
     /* CHANGED FROM ABSOLUTE TO RELATIVE */
     /* This makes it sit in the flow, pushing the slides down */
@@ -88,8 +88,9 @@ audio:hover { opacity: 1; }
     text-transform: uppercase;
     z-index: 20;
     
-    /* Flexbox handles centering now, so we remove left/transform hacks */
+    /* Remove absolute centering since it's relative now */
     left: auto;
+    top: auto;
     transform: none;
     white-space: nowrap;
 }
@@ -97,7 +98,7 @@ audio:hover { opacity: 1; }
 /* --- SWIPER / CARD STYLES --- */
 .swiper {
     width: 100%;
-    /* Removed top padding since the header margin handles the gap now */
+    /* Removed large top padding since the header margin handles the gap now */
     padding-top: 10px; 
     padding-bottom: 40px;
     overflow: visible; 
@@ -326,20 +327,18 @@ h2 {
     100% { transform: scale(1); }
 }
 
-/* --- TABLET SPECIFIC (601px - 1024px) --- */
-@media (min-width: 601px) and (max-width: 1024px) {
+/* --- TABLET SPECIFIC (601px - 1280px) --- */
+@media (min-width: 601px) and (max-width: 1280px) {
+    /* Reduce width on tablets to ensure proper centering */
     .swiper-slide {
         width: 60vw; 
     }
     
-    /* Ensure header respects flow in tablet too */
+    /* Ensure Header sits nicely in flow */
     .header-info { 
         position: relative; 
-        top: auto; 
-        left: auto;
-        transform: none;
+        font-size: 0.8rem;
         margin-bottom: 30px;
-        font-size: 0.8rem; 
     }
 }
 
@@ -348,7 +347,7 @@ h2 {
     .main-container { padding-top: 40px; padding-bottom: 20px; left: 0; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
-    /* Header Info: Significantly smaller & relative position */
+    /* Header Info: Relative and Small */
     .header-info { 
         position: relative; 
         top: auto;
@@ -358,7 +357,7 @@ h2 {
         font-size: 9px !important; 
         padding: 4px 10px; 
         letter-spacing: 1px;
-        margin-bottom: 20px; /* Small gap on phone */
+        margin-bottom: 20px; /* Gap for phone */
     }
     
     .swiper-slide { 
