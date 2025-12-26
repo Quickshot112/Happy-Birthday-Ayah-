@@ -46,10 +46,11 @@ audio:hover { opacity: 1; }
 /* --- MAIN CONTAINER (SCROLLABLE) --- */
 .main-container {
     width: 100%;
-    /* Min-height ensures it fills screen, but auto allows scrolling */
     min-height: 100vh;
     height: auto;
-	left: 20px;
+    
+    /* DESKTOP DEFAULT: Your preferred setting */
+    left: 20px;
     
     display: flex;
     flex-direction: column;
@@ -64,7 +65,7 @@ audio:hover { opacity: 1; }
 
 .header-info {
     position: absolute; 
-    top: 30px; /* Positioned near top */
+    top: 30px; 
     color: #DA291C;
     font-family: 'Russo One', sans-serif;
     letter-spacing: 2px;
@@ -84,7 +85,7 @@ audio:hover { opacity: 1; }
 /* --- SWIPER / CARD STYLES --- */
 .swiper {
     width: 100%;
-    padding: 20px 0; /* Breathing room around slides */
+    padding: 20px 0; 
     overflow: visible; 
     margin: 0 auto; 
 }
@@ -96,7 +97,6 @@ audio:hover { opacity: 1; }
     /* --- DESKTOP DIMENSIONS --- */
     width: 70vw; 
     max-width: 1000px; 
-    /* Slightly reduced height to allow scrolling space */
     height: 75vh; 
     min-height: 600px;
     
@@ -273,10 +273,8 @@ h2 {
 /* --- FOOTER STYLES (SCROLLABLE) --- */
 .site-footer {
     width: 100%;
-    /* Position relative allows it to sit at bottom of scroll */
     position: relative; 
-    margin-top: 50px; /* Space between slides and footer */
-    
+    margin-top: 50px; 
     background-color: #DA291C; 
     color: white;
     padding: 40px 20px; 
@@ -313,16 +311,31 @@ h2 {
     100% { transform: scale(1); }
 }
 
+/* --- TABLET SPECIFIC MODE (601px - 1280px) --- */
+/* This fixes the "Left Lean" on tablets by pushing content right */
+@media (min-width: 601px) and (max-width: 1280px) {
+    .main-container {
+        /* INCREASED LEFT SHIFT FOR TABLET */
+        left: 60px; 
+    }
+}
 
-/* --- MOBILE SPECIFIC SETTINGS --- */
+/* --- MOBILE SPECIFIC SETTINGS (< 600px) --- */
 @media (max-width: 600px) {
-    .main-container { padding-top: 80px; padding-bottom: 20px; left: 0px; }
+    /* Reset Left shift to 0 for phones */
+    .main-container { 
+        padding-top: 80px; 
+        padding-bottom: 20px; 
+        left: 0px; 
+    }
+    
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
-    /* Header Info: Significantly smaller */
     .header-info { 
         position: absolute; 
         top: 20px; 
+        /* UPDATED: Clear legible small font */
+        font-size: 9px !important; 
         padding: 4px 10px; 
         letter-spacing: 1px;
     }
@@ -337,23 +350,18 @@ h2 {
     .image-area { height: 60%; border-bottom-width: 4px; } 
     .text-area { padding: 15px; }
     
-    /* Card Fonts: Reduced to be less overpowering on phone */
-    .name-text { font-size: 1.5rem; margin: 5px 0; }
-    .sub-name { font-size: 0.9rem; margin-bottom: 10px; }
-    h2 { font-size: 1.1rem; } /* Smaller titles */
-    .desc { font-size: 0.8rem; margin-bottom: 8px;}
-    .role { font-size: 0.7rem; margin-bottom: 5px;}
-    .age-badge { font-size: 0.7rem; padding: 4px 12px; margin-bottom: 10px; }
+    .name-text { font-size: 1.8rem; margin: 5px 0; }
+    .sub-name { font-size: 1rem; margin-bottom: 10px; }
+    h2 { font-size: 1.4rem; }
+    .desc { font-size: 0.9rem; margin-bottom: 10px;}
+    .role { font-size: 0.8rem; margin-bottom: 5px;}
+    .age-badge { font-size: 0.8rem; padding: 5px 15px; margin-bottom: 10px; }
 
-    .ribbon { top: 20px; right: -30px; padding: 5px 40px; font-size: 0.6rem; }
+    .ribbon { top: 20px; right: -30px; padding: 5px 40px; font-size: 0.7rem; }
     
-    #celebrateBtn { padding: 10px 20px; font-size: 0.9rem; }
+    #celebrateBtn { padding: 12px 25px; font-size: 1rem; }
     .badge-icon { font-size: 2rem; top: 15px; left: 15px; }
     
     .site-footer { padding: 30px 15px; margin-top: 30px; }
-    .site-footer p { font-size: 0.8rem; }
+    .site-footer p { font-size: 0.9rem; }
 }
-
-
-
-
