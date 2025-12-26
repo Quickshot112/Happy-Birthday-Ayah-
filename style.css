@@ -17,7 +17,7 @@ body {
     /* ENABLE VERTICAL SCROLLING */
     overflow-y: auto; 
     
-    /* TRUE CENTER LAYOUT */
+    /* Standard Layout */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,23 +59,28 @@ audio:hover { opacity: 1; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    
+    /* FIX: START FROM TOP INSTEAD OF CENTER */
+    /* This prevents the header from getting cut off */
+    justify-content: flex-start; 
+    
     position: relative;
     
-    /* Reduced top padding because Header now takes up real space */
+    /* Add space at the top so header isn't stuck to edge */
     padding-top: 40px; 
     padding-bottom: 50px;
 }
 
-/* --- HEADER INFO (GAP FIX) --- */
+/* --- HEADER INFO (VISIBLE GAP FIX) --- */
 .header-info {
-    /* CHANGED FROM ABSOLUTE TO RELATIVE */
-    /* This makes it sit in the flow, pushing the slides down */
+    /* SIT IN FLOW (Relative) */
     position: relative; 
+    
+    /* Space above the header */
     margin-top: 10px;
     
-    /* THIS IS THE GAP YOU WANTED */
-    margin-bottom: 40px; 
+    /* THIS IS THE GAP BETWEEN HEADER AND SLIDES */
+    margin-bottom: 50px; 
     
     color: #DA291C;
     font-family: 'Russo One', sans-serif;
@@ -88,7 +93,7 @@ audio:hover { opacity: 1; }
     text-transform: uppercase;
     z-index: 20;
     
-    /* Remove absolute centering since it's relative now */
+    /* Reset transform centering since we are using flexbox */
     left: auto;
     top: auto;
     transform: none;
@@ -98,7 +103,6 @@ audio:hover { opacity: 1; }
 /* --- SWIPER / CARD STYLES --- */
 .swiper {
     width: 100%;
-    /* Removed large top padding since the header margin handles the gap now */
     padding-top: 10px; 
     padding-bottom: 40px;
     overflow: visible; 
@@ -327,14 +331,12 @@ h2 {
     100% { transform: scale(1); }
 }
 
-/* --- TABLET SPECIFIC (601px - 1280px) --- */
-@media (min-width: 601px) and (max-width: 1280px) {
-    /* Reduce width on tablets to ensure proper centering */
+/* --- TABLET SPECIFIC (601px - 1024px) --- */
+@media (min-width: 601px) and (max-width: 1024px) {
     .swiper-slide {
         width: 60vw; 
     }
     
-    /* Ensure Header sits nicely in flow */
     .header-info { 
         position: relative; 
         font-size: 0.8rem;
@@ -344,20 +346,16 @@ h2 {
 
 /* --- MOBILE SPECIFIC (< 600px) --- */
 @media (max-width: 600px) {
-    .main-container { padding-top: 40px; padding-bottom: 20px; left: 0; }
+    /* Less top padding on mobile since header is relative */
+    .main-container { padding-top: 40px; padding-bottom: 20px; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
-    /* Header Info: Relative and Small */
     .header-info { 
         position: relative; 
-        top: auto;
-        left: auto;
-        transform: none;
-        
         font-size: 9px !important; 
         padding: 4px 10px; 
         letter-spacing: 1px;
-        margin-bottom: 20px; /* Gap for phone */
+        margin-bottom: 20px; 
     }
     
     .swiper-slide { 
