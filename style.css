@@ -49,7 +49,7 @@ audio:hover { opacity: 1; }
     /* Min-height ensures it fills screen, but auto allows scrolling */
     min-height: 100vh;
     height: auto;
-    /* Removed 'left: 20px' to ensure true centering */
+	left: 20px;
     
     display: flex;
     flex-direction: column;
@@ -316,17 +316,16 @@ h2 {
 
 /* --- MOBILE SPECIFIC SETTINGS --- */
 @media (max-width: 600px) {
-    /* Removed 'left: 5px' to prevent misalignment */
-    .main-container { padding-top: 80px; padding-bottom: 20px; }
+    .main-container { padding-top: 80px; padding-bottom: 20px; left: 0px; }
     .swiper { padding-top: 10px; padding-bottom: 20px; }
     
+    /* Header Info: Significantly smaller */
     .header-info { 
         position: absolute; 
         top: 20px; 
-        /* SMALLER FONT SIZE ON MOBILE: */
-        font-size: 0.6rem; 
-        padding: 5px 15px; /* Reduced padding */
-        white-space: nowrap; /* Keeps it on one line */
+        font-size: 9px !important; /* Force tiny text */
+        padding: 4px 10px; 
+        letter-spacing: 1px;
     }
     
     .swiper-slide { 
@@ -339,18 +338,19 @@ h2 {
     .image-area { height: 60%; border-bottom-width: 4px; } 
     .text-area { padding: 15px; }
     
-    .name-text { font-size: 1.8rem; margin: 5px 0; }
-    .sub-name { font-size: 1rem; margin-bottom: 10px; }
-    h2 { font-size: 1.4rem; }
-    .desc { font-size: 0.9rem; margin-bottom: 10px;}
-    .role { font-size: 0.8rem; margin-bottom: 5px;}
-    .age-badge { font-size: 0.8rem; padding: 5px 15px; margin-bottom: 10px; }
+    /* Card Fonts: Reduced to be less overpowering on phone */
+    .name-text { font-size: 1.5rem; margin: 5px 0; }
+    .sub-name { font-size: 0.9rem; margin-bottom: 10px; }
+    h2 { font-size: 1.1rem; } /* Smaller titles */
+    .desc { font-size: 0.8rem; margin-bottom: 8px;}
+    .role { font-size: 0.7rem; margin-bottom: 5px;}
+    .age-badge { font-size: 0.7rem; padding: 4px 12px; margin-bottom: 10px; }
 
-    .ribbon { top: 20px; right: -30px; padding: 5px 40px; font-size: 0.7rem; }
+    .ribbon { top: 20px; right: -30px; padding: 5px 40px; font-size: 0.6rem; }
     
-    #celebrateBtn { padding: 12px 25px; font-size: 1rem; }
+    #celebrateBtn { padding: 10px 20px; font-size: 0.9rem; }
     .badge-icon { font-size: 2rem; top: 15px; left: 15px; }
     
     .site-footer { padding: 30px 15px; margin-top: 30px; }
-    .site-footer p { font-size: 0.9rem; }
+    .site-footer p { font-size: 0.8rem; }
 }
